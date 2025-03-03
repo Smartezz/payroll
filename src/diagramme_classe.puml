@@ -1,0 +1,38 @@
+@startuml
+
+package "API Layer" {
+    class DepartmentController
+    class EmployeeController
+}
+
+package "Interaction Layer" {
+    class LoadDatabase
+}
+
+package "Integration Layer" {
+    interface DepartmentRepository
+    interface EmployeeRepository
+}
+
+package "Data Layer" {
+    class Department
+    class Employee
+    class DepartmentNotFoundException
+    class EmployeeNotFoundException
+}
+
+DepartmentController --> DepartmentRepository : dépend de
+EmployeeController --> EmployeeRepository : dépend de
+
+DepartmentRepository ..> Department : accède à
+EmployeeRepository ..> Employee : accède à
+
+DepartmentController --> DepartmentNotFoundException : gère les exceptions
+EmployeeController --> EmployeeNotFoundException : gère les exceptions
+
+Employee --> Department : associe à un
+
+LoadDatabase --> DepartmentRepository : dépend de
+LoadDatabase --> EmployeeRepository : dépend de
+
+@enduml
