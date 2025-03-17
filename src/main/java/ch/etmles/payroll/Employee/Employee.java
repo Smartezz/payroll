@@ -22,12 +22,12 @@ public class Employee {
     public Employee() {}
 
     public Employee(String name, String role, String email, Department department) {
-        this.name = name;
-        this.role = role;
-        this.email = email;
-        this.department = department;
+        setName(name);
+        setRole(role);
+        setEmail(email);
+        setDepartment(department);
     }
-
+    
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
